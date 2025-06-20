@@ -5,7 +5,7 @@
 // see https://code.google.com/p/google-caja/issues/detail?can=2&q=&colspec=ID%20Type%20Status%20Priority%20Owner%20Summary&groupby=&sort=&id=1296
 //
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Sidebar } from "./Sidebar.js";
 import { Editor } from "./Editor.js";
 

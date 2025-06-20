@@ -2,7 +2,7 @@
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Editor } from "./Editor.js";
 import { Dialog } from "./Editor.js";
 import { Graph } from "./Graph.js";

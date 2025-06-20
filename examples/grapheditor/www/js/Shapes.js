@@ -2,7 +2,7 @@
  * Copyright (c) 2006-2015, JGraph Ltd
  */
 
-//import * as m from "../../../../../dist/mxgraph.es.js";
+//import * as m from "../../../../dist/mxgraph.es.js";
 import {
   mxUtils,
   mxSwimlane,
@@ -31,7 +31,7 @@ import {
   mxCloud,
   mxArrow,
   mxConstants,
-} from "../../../../../dist/mxgraph.es.js";
+} from "../../../../dist/mxgraph.es.js";
 
 import { Graph } from "./Graph.js";
 

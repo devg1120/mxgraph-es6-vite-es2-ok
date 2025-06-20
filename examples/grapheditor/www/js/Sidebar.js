@@ -5,7 +5,7 @@
  * Construcs a new sidebar for the given editor.
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Editor } from "./Editor.js";
 import { Graph } from "./Graph.js";
 

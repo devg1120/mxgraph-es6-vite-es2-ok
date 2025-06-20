@@ -5,7 +5,7 @@
  * Construcs a new toolbar for the given editor.
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 //import { EditorUi } from "./EditorUi.js";
 //import { Menus } from "./Menus.js";
 import { Default } from "./Default.js";

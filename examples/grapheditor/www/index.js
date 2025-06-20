@@ -1,4 +1,4 @@
-import * as m from "../../../../dist/mxgraph.es.js";
+import * as m from "../../../dist/mxgraph.es.js";
 import { Actions } from "./js/Actions.js";
 //import {Dialogs}  from "./js/Dialogs.js";
 import { Editor } from "./js/Editor.js";

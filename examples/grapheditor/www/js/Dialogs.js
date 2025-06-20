@@ -5,7 +5,7 @@
  * Constructs a new open dialog.
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Editor } from "./Editor.js";
 import { Dialog } from "./Editor.js";
 import { EditorUi } from "./EditorUi.js";

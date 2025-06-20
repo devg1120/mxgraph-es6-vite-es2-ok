@@ -4,7 +4,7 @@
  *
  * Constructs the actions object for the given UI.
  */
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Editor } from "./Editor.js";
 import { FilenameDialog } from "./Editor.js";
 import { OutlineWindow } from "./Dialogs.js";

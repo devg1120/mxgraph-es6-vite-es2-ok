@@ -4,7 +4,7 @@
 /**
  * Editor constructor executed on page load.
  */
-import * as m   from "../../../../../dist/mxgraph.es.js";
+import * as m   from "../../../../dist/mxgraph.es.js";
 import {Graph} from "./Graph.js";
 
 //Editor = function (chromeless, themes, model, graph, editable) {

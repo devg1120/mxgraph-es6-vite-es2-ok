@@ -5,7 +5,7 @@
  * Constructs a new graph editor
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 import { Actions } from "./Actions.js";
 import { Sidebar } from "./Sidebar.js";
 import { Graph } from "./Graph.js";

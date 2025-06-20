@@ -2,7 +2,7 @@
  * Copyright (c) 2006-2015, JGraph Ltd
  */
 
-import * as m from "../../../../../dist/mxgraph.es.js";
+import * as m from "../../../../dist/mxgraph.es.js";
 
 /**
  * Registers shapes.

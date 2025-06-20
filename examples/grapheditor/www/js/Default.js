@@ -5,7 +5,7 @@
  * Constructs a new graph editor
  */
 
-//import * as m from "../../../../../dist/mxgraph.es.js";
+//import * as m from "../../../../dist/mxgraph.es.js";
 //import { EditorUi } from "./EditorUi.js";
 
 

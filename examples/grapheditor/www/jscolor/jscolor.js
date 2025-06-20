@@ -8,7 +8,7 @@
  * @updated 2012-01-19
  * @link    http://jscolor.com
  */
-import {mxClient}  from "../../../../../dist/mxgraph.es.js";
+import {mxClient}  from "../../../../dist/mxgraph.es.js";
 
 const mxJSColor = {
   dir: "", // location of jscolor directory (leave empty to autodetect)
