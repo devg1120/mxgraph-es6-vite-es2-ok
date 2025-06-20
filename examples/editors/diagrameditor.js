@@ -109,9 +109,13 @@ globalThis.g_onInit = function (editor) {
       textNode.style.display = "inline";
 
       var enc = new m.mxCodec();
-      var node = enc.encode(editor.graph.getModel());
+      var model = enc.encode(editor.graph.getModel());
+      console.dir(model); //GS
+      var node = enc.encode(editor.graph.getModel());  
+      console.dir(node);  //GS
 
-      textNode.value = m.mxUtils.getPrettyXml(node);
+      textNode.value = m.mxUtils.getPrettyXml(node); // 重い
+      console.log(textNode.value); //GS
       textNode.originalValue = textNode.value;
       textNode.focus();
     } else {
