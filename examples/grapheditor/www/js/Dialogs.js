@@ -1255,11 +1255,12 @@ ExportDialog.showXmlOption = true;
  */
 ExportDialog.exportFile = function (editorUi, name, format, bg, s, b, dpi) {
   var graph = editorUi.editor.graph;
-
+  console.log("save_xml");
   if (format == "xml") {
     ExportDialog.saveLocalFile(
       editorUi,
       mxUtils.getXml(editorUi.editor.getGraphXml()),
+      //mxUtils.getPrettyXml(editorUi.editor.getGraphXml()),
       name,
       format,
     );

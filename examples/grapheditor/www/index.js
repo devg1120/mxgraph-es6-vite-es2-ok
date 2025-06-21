@@ -88,7 +88,7 @@ var mxLoadResources = false;
           this.actions.get("open").setEnabled(enabled || Graph.fileSupport);
           this.actions.get("import").setEnabled(enabled || Graph.fileSupport);
           this.actions.get("save").setEnabled(enabled);
-          //this.actions.get("saveAs").setEnabled(enabled);
+          //GUSA this.actions.get("saveAs").setEnabled(enabled);
           this.actions.get("export").setEnabled(enabled);
         }),
       );

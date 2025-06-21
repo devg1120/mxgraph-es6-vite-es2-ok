@@ -4631,12 +4631,14 @@ EditorUi.prototype.saveFile = function (forceDialog) {
  * Saves the current graph under the given filename.
  */
 EditorUi.prototype.save = function (name) {
+  console.log("save");
   if (name != null) {
     if (this.editor.graph.isEditing()) {
       this.editor.graph.stopEditing();
     }
 
-    var xml = m.mxUtils.getXml(this.editor.getGraphXml());
+    //var xml = m.mxUtils.getXml(this.editor.getGraphXml());
+    var xml = m.mxUtils.getPrettyXml(this.editor.getGraphXml());
 
 
 const blob = new Blob([xml], {type: 'text/plain'});
