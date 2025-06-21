@@ -8,6 +8,7 @@ export class mxCodecRegistry {
   static register(codec) {
     if (codec != null) {
       var name = codec.getName();
+      //console.log("mxCodecRegistry::register", name);
       mxCodecRegistry.codecs[name] = codec;
       var classname = mxUtils.getFunctionName(codec.template.constructor);
 
@@ -23,7 +24,8 @@ export class mxCodecRegistry {
     mxCodecRegistry.aliases[classname] = codecname;
   }
 
-  static getCodec(ctor) {
+  static getCodec_org(ctor) {
+    //	  console.log("mxCodecRegistry::getCodec", ctor);
     var codec = null;
 
     if (ctor != null) {
@@ -35,6 +37,7 @@ export class mxCodecRegistry {
       }
 
       codec = mxCodecRegistry.codecs[name];
+      //codec = mxCodecRegistry.codecs[ctor];
 
       if (codec == null) {
         try {
@@ -43,6 +46,27 @@ export class mxCodecRegistry {
         } catch (e) {
           /* ignore */
         }
+      }
+    }
+
+    return codec;
+  }
+
+  static getCodec(name) {
+    //	  console.log("mxCodecRegistry::getCodec", ctor);
+    var codec = null;
+
+    codec = mxCodecRegistry.codecs[name];
+    //codec = mxCodecRegistry.codecs[ctor];
+
+    if (codec == null) {
+      try {
+        let classname = name;
+        let obj = eval("new " + classname + "()");
+        codec = new mxObjectCodec(obj);
+        mxCodecRegistry.register(codec);
+      } catch (e) {
+        /* ignore */
       }
     }
 
