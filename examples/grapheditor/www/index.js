@@ -77,6 +77,7 @@ var mxLoadResources = false;
     editorUiInit.apply(this, arguments);
     this.actions.get("export").setEnabled(false);
 
+      this.actions.get("saveAs").setEnabled(true);  // GUSA
     // Updates action states which require a backend
     if (!Editor.useLocalStorage) {
       m.mxUtils.post(
@@ -87,7 +88,7 @@ var mxLoadResources = false;
           this.actions.get("open").setEnabled(enabled || Graph.fileSupport);
           this.actions.get("import").setEnabled(enabled || Graph.fileSupport);
           this.actions.get("save").setEnabled(enabled);
-          this.actions.get("saveAs").setEnabled(enabled);
+          //this.actions.get("saveAs").setEnabled(enabled);
           this.actions.get("export").setEnabled(enabled);
         }),
       );
