@@ -57,6 +57,8 @@ export class mxCodec {
 
       if (this.document.documentElement != null) {
         this.addElement(this.document.documentElement);
+      } else {
+         console.log("mxCodec constructor needs document parameter")
       }
     }
   }
@@ -132,102 +134,67 @@ export class mxCodec {
   }
 
   decode(node, into) {
+	console.log("window", window)
+	var obj = null;
+	if (node != null && node.nodeType == mxConstants.NODETYPE_ELEMENT)
+	{
+		var ctor = null;
+		try
+		{
+			ctor = window[node.nodeName];
+		}
+		catch (err)
+		{
+			// ignore
+		}
+
+		//console.log(node.nodeName, "ctor",ctor)
+		var dec = mxCodecRegistry.getCodec(ctor);
+		//var dec = mxCodecRegistry.codecs[node.nodeName];
+		if (dec != null)
+		{
+			console.log("find dec");
+			obj = dec.decode(this, node, into);
+		}
+		else
+		{
+			console.log("not find dec");
+			obj = node.cloneNode(true);
+			obj.removeAttribute('as');
+		}
+	}
+	
+	return obj;
+  }
+
+  decode_(node, into) {
     this.updateElements();
     var obj = null;
 
     if (node != null && node.nodeType == mxConstants.NODETYPE_ELEMENT) {
+      var ctor = null;
 
-      //var ctor = null;
-      //try {
-      //  ctor = window[node.nodeName];
-      //} catch (err) {
-      //  /* ignore */
-      //}
+	console.log("nodeName",node.nodeName);
+	ctor = window[node.nodeName];
 
-      //var dec = mxCodecRegistry.getCodec(ctor);
-      //var dec = mxCodecRegistry.getCodec(node.nodeName);
+      var dec = null;
 
       var dec = mxCodecRegistry.getCodec(node.nodeName);
-
       if (dec != null) {
-        obj = dec.decode(this, node, into);
-      } else {
-        obj = node.cloneNode(true);
-        obj.removeAttribute("as");
-      }
-    }
-
-    return obj;
-  }
-
-  decode_tmp(node, into) {
-    this.updateElements();
-    var obj = null;
-
-    //    if (node != null && node.nodeType == mxConstants.NODETYPE_ELEMENT) {
-    var ctor = null;
-
-    //      try {
-    //        ctor = window[node.nodeName];
-    //      } catch (err) {
-    //        /* ignore */
-    //      }
-    //
-    //     var dec = mxCodecRegistry.getCodec(ctor);  /*  GS  BUG FIX */
-
-    //      var dec = mxCodecRegistry.getCodec(node.nodeName );
-
-    var dec = null;
-
-    var dec = mxCodecRegistry.getCodec(node.nodeName);
-    if (dec != null) {
-      try {
-        /* try GS */
-        obj = dec.decode(this, node, into);
-      } catch (err) {
-        console.log("dec.decode err", err);
-      }
-    } else {
-      //console.log("mxCodec:", node.nodeName, "null",node);
-      //console.dir(node.outerHTML.x);
-      //obj = node.cloneNode(true);
-      //obj.removeAttribute('as');
-      if (node.nodeName == "mxGeometry") {
-        // <mxGeometry x="350" y="250" width="120" height="60" as="geometry"/>
-        const parser = new DOMParser();
-
-        const doc = parser.parseFromString(node.outerHTML, "application/xml");
-        //console.dir(doc.documentElement.attributes[0].name);
-        //console.dir(doc.documentElement.attributes[0].value);
-
-        let x = 0;
-        let y = 0;
-        let width = 0;
-        let height = 0;
-
-        for (let i = 0; i < doc.documentElement.attributes.length; i++) {
-          //console.dir(doc.documentElement.attributes[i].name);
-          let name = doc.documentElement.attributes[i].name;
-
-          if (name == "x") {
-            x = parseInt(doc.documentElement.attributes[i].value, 10);
-          } else if (name == "y") {
-            y = parseInt(doc.documentElement.attributes[i].value, 10);
-          } else if (name == "width") {
-            width = parseInt(doc.documentElement.attributes[i].value, 10);
-          } else if (name == "height") {
-            height = parseInt(doc.documentElement.attributes[i].value, 10);
-          }
+        try {
+          obj = dec.decode(this, node, into);
+        } catch (err) {
+          console.log("dec.decode err", err);
         }
-
-        /* GS */
-        //obj = new mxGeometry(30, 0, 100, 100);
-        obj = new mxGeometry(x, y, width, height);
       } else {
-        console.log("mxCodec decode notreg:", node.nodeName);
+	console.log("not dec", ctor);
+        if (node.nodeName == "mxGeometry") {
+          obj = new mxGeometry(0, 0, 100, 100);
+        } else {
+          console.warn("mxCodec decode notreg:", node.nodeName);
+        }
       }
     }
-    //  }
     return obj;
   }
 

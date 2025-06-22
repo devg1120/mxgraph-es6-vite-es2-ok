@@ -550,9 +550,11 @@ Editor.prototype.readGraphState = function (node) {
  * Sets the XML node for the current diagram.
  */
 Editor.prototype.setGraphXml = function (node) {
+	console.log("Editor.prototype.setGraphXml");
   if (node != null) {
     var dec = new m.mxCodec(node.ownerDocument);
-
+    console.log("dec");
+    console.log(dec);
     if (node.nodeName == "mxGraphModel") {
       this.graph.model.beginUpdate();
 

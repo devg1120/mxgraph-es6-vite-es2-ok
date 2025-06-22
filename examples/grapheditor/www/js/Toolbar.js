@@ -1539,7 +1539,7 @@ Toolbar.prototype.createButton = function (classname) {
 
   var inner = document.createElement("div");
 
-console.log("Toolbar:createButton", "geSprite" + classname);
+   //console.log("Toolbar:createButton", "geSprite" + classname);
 
   if (classname != null) {
     inner.className = "geSprite " + classname;
