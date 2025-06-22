@@ -24,7 +24,7 @@ export class mxCodecRegistry {
     mxCodecRegistry.aliases[classname] = codecname;
   }
 
-  static getCodec_org(ctor) {
+  static getCodec_encode(ctor) {
     //	  console.log("mxCodecRegistry::getCodec", ctor);
     var codec = null;
 
